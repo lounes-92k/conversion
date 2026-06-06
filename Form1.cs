@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace conversion
 {
@@ -19,17 +20,33 @@ namespace conversion
         public Form1()
         {
             InitializeComponent();
-            this.Text = "Conversion";
-            this.Size = new System.Drawing.Size(400, 300);
+            this.Text = "Application de Conversion";
+            this.Size = new System.Drawing.Size(420, 350);
+            this.BackColor = Color.FromArgb(240, 240, 245);
 
+            // Titre en haut
+            Label titre = new Label();
+            titre.Text = "🔄 Convertisseur";
+            titre.Font = new Font("Arial", 14, FontStyle.Bold);
+            titre.ForeColor = Color.FromArgb(50, 50, 150);
+            titre.Location = new Point(20, 10);
+            titre.AutoSize = true;
+            this.Controls.Add(titre);
+
+            // Label Type
             Label l1 = new Label();
             l1.Text = "Type :";
-            l1.Location = new System.Drawing.Point(20, 20);
+            l1.Font = new Font("Arial", 9, FontStyle.Bold);
+            l1.Location = new System.Drawing.Point(20, 50);
+            l1.AutoSize = true;
             this.Controls.Add(l1);
 
+            // ComboBox Type
             cmbType = new ComboBox();
-            cmbType.Location = new System.Drawing.Point(20, 40);
-            cmbType.Width = 150;
+            cmbType.Location = new System.Drawing.Point(20, 70);
+            cmbType.Width = 160;
+            cmbType.Height = 30;
+            cmbType.Font = new Font("Arial", 9);
             cmbType.Items.Add("Température");
             cmbType.Items.Add("Unités");
             cmbType.Items.Add("Devises");
@@ -37,48 +54,75 @@ namespace conversion
             cmbType.SelectedIndexChanged += cmbType_Changed;
             this.Controls.Add(cmbType);
 
+            // Label Valeur
             Label l2 = new Label();
             l2.Text = "Valeur :";
-            l2.Location = new System.Drawing.Point(20, 80);
+            l2.Font = new Font("Arial", 9, FontStyle.Bold);
+            l2.Location = new System.Drawing.Point(20, 110);
+            l2.AutoSize = true;
             this.Controls.Add(l2);
 
+            // TextBox Valeur
             txtValeur = new TextBox();
-            txtValeur.Location = new System.Drawing.Point(20, 100);
-            txtValeur.Width = 100;
+            txtValeur.Location = new System.Drawing.Point(20, 130);
+            txtValeur.Width = 160;
+            txtValeur.Height = 30;
+            txtValeur.Font = new Font("Arial", 10);
+            txtValeur.BorderStyle = BorderStyle.FixedSingle;
+            txtValeur.BackColor = Color.White;
             this.Controls.Add(txtValeur);
 
+            // Label De
             Label l3 = new Label();
             l3.Text = "De :";
-            l3.Location = new System.Drawing.Point(20, 135);
+            l3.Font = new Font("Arial", 9, FontStyle.Bold);
+            l3.Location = new System.Drawing.Point(20, 170);
+            l3.AutoSize = true;
             this.Controls.Add(l3);
 
+            // ComboBox De
             cmbDe = new ComboBox();
-            cmbDe.Location = new System.Drawing.Point(20, 155);
-            cmbDe.Width = 120;
+            cmbDe.Location = new System.Drawing.Point(20, 190);
+            cmbDe.Width = 130;
+            cmbDe.Font = new Font("Arial", 9);
             this.Controls.Add(cmbDe);
 
+            // Label Vers
             Label l4 = new Label();
             l4.Text = "Vers :";
-            l4.Location = new System.Drawing.Point(160, 135);
+            l4.Font = new Font("Arial", 9, FontStyle.Bold);
+            l4.Location = new System.Drawing.Point(170, 170);
+            l4.AutoSize = true;
             this.Controls.Add(l4);
 
+            // ComboBox Vers
             cmbVers = new ComboBox();
-            cmbVers.Location = new System.Drawing.Point(160, 155);
-            cmbVers.Width = 120;
+            cmbVers.Location = new System.Drawing.Point(170, 190);
+            cmbVers.Width = 130;
+            cmbVers.Font = new Font("Arial", 9);
             this.Controls.Add(cmbVers);
 
+            // Bouton Convertir
             btnConvertir = new Button();
             btnConvertir.Text = "Convertir";
-            btnConvertir.Location = new System.Drawing.Point(20, 195);
-            btnConvertir.Width = 100;
+            btnConvertir.Location = new System.Drawing.Point(20, 235);
+            btnConvertir.Width = 120;
             btnConvertir.Height = 35;
+            btnConvertir.Font = new Font("Arial", 10, FontStyle.Bold);
+            btnConvertir.BackColor = Color.FromArgb(50, 50, 150);
+            btnConvertir.ForeColor = Color.White;
+            btnConvertir.FlatStyle = FlatStyle.Flat;
+            btnConvertir.FlatAppearance.BorderSize = 0;
             btnConvertir.Click += btnConvertir_Click;
             this.Controls.Add(btnConvertir);
 
+            // Label Résultat
             lblResultat = new Label();
             lblResultat.Text = "Résultat : ";
-            lblResultat.Location = new System.Drawing.Point(20, 235);
-            lblResultat.Width = 300;
+            lblResultat.Location = new System.Drawing.Point(20, 285);
+            lblResultat.Width = 350;
+            lblResultat.Font = new Font("Arial", 11, FontStyle.Bold);
+            lblResultat.ForeColor = Color.FromArgb(50, 50, 150);
             this.Controls.Add(lblResultat);
 
             remplirListes();
@@ -155,12 +199,10 @@ namespace conversion
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
